@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // --- 1. ORDER BUTTONS TOGGLE ---
+    // ---  ORDER BUTTONS TOGGLE ---
     const orderButtons = document.querySelectorAll(".card-button,.main-btn");
 
     orderButtons.forEach(button => {
@@ -15,12 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
- 
-  
-
-
-
-    // --- 4. SUBSCRIPTION POPUP ---
+    // ---SUBSCRIPTION POPUP ---
     const subscribeSection = document.querySelector(".subscribe");
     const subscribeBtn = subscribeSection.querySelector("button");
     const subscribeInput = subscribeSection.querySelector("input");
@@ -34,8 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // --- 5. SMOOTH SCROLL FOR NAV LINKS ---
-    // This looks for links like <a href="#footer"> and scrolls smoothly
+    // SMOOTH SCROLL FOR NAV LINKS --
     const links = document.querySelectorAll('.nav-item a, .footer-links a');
 
     links.forEach(link => {
