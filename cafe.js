@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // ---  ORDER BUTTONS TOGGLE ---
-    const orderButtons = document.querySelectorAll(".card-button,.main-btn");
 
+    // ===== ORDER BUTTONS =====
+    const orderButtons = document.querySelectorAll(".card-button, .main-btn");
     orderButtons.forEach(button => {
         button.addEventListener("click", () => {
             if (button.innerText === "Order now") {
@@ -10,92 +10,71 @@ document.addEventListener("DOMContentLoaded", () => {
                 button.style.color = "white";
             } else {
                 button.innerText = "Order now";
-                button.style.backgroundColor = ""; // Resets to original CSS
+                button.style.backgroundColor = "";
                 button.style.color = "";
             }
         });
     });
-    // ---SUBSCRIPTION POPUP ---
-    const subscribeSection = document.querySelector(".subscribe");
-    const subscribeBtn = subscribeSection.querySelector("button");
-    const subscribeInput = subscribeSection.querySelector("input");
+
+    // ===== HAMBURGER MENU =====
+    const menuBtn = document.querySelector(".menu-btn");
+    const navList = document.querySelector(".nav-list");
+
+    menuBtn.addEventListener("click", () => {
+        navList.classList.toggle("open");
+    });
+
+    // ===== SEARCH =====
+    const searchIcon = document.querySelector(".search-icon");
+    const searchBox = document.querySelector(".search-box");
+    const logBox = document.querySelector(".log-box");
+
+    searchIcon.addEventListener("click", () => {
+        searchBox.classList.toggle("active");
+        logBox.classList.remove("active");
+    });
+
+    // ===== LOGIN =====
+    const loginBtn = document.getElementById("login");
+
+    loginBtn.addEventListener("click", () => {
+        logBox.classList.toggle("active");
+        searchBox.classList.remove("active");
+    });
+
+    // ===== SUBSCRIBE =====
+    const subscribeBtn = document.getElementById("subscribe-btn");
+    const subscribeInput = document.getElementById("subscribe-email");
 
     subscribeBtn.addEventListener("click", () => {
         if (subscribeInput.value.includes("@")) {
             alert("Thank you for subscribing! Your 15% discount code has been sent to your email.");
-            subscribeInput.value = ""; // Clear input
+            subscribeInput.value = "";
         } else {
             alert("Please enter a valid email address.");
         }
     });
-
-    // SMOOTH SCROLL FOR NAV LINKS --
+document.addEventListener("click", (e) => {
+    if (!e.target.closest(".nav-bar")) {
+        navList.classList.remove("open");
+        searchBox.classList.remove("active");
+        logBox.classList.remove("active");
+    }
+});
+    // ===== SMOOTH SCROLL  and  CLOSE MENU =====
     const links = document.querySelectorAll('.nav-item a, .footer-links a');
-
     links.forEach(link => {
         link.addEventListener('click', (e) => {
             const targetId = link.getAttribute('href');
-            
-            // Only scroll if it's an internal link (starts with #)
-            if (targetId.startsWith("#") && targetId.length > 1) {
+            if (targetId && targetId.startsWith("#") && targetId.length > 1) {
                 e.preventDefault();
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     targetElement.scrollIntoView({ behavior: 'smooth' });
-                    
-                    // Close mobile menu after clicking
-                    navItems.forEach(item => item.style.display = "none");
+                    navList.classList.remove("open");
                 }
             }
         });
     });
-});const menuBtn = document.querySelector(".menu-btn");
-const navList = document.querySelector(".nav-list");
-
-menuBtn.addEventListener("click", () => {
-
-    if(navList.style.display === "flex"){
-        navList.style.display = "none";
-    }
-
-    else{
-        navList.style.display = "flex";
-    }
-
-});
-
-const button = document.querySelector(".search-icon");
-const form = document.querySelector(".search-box");
-
-button.addEventListener("click", () => {
-
-    if(form.style.display === "block"){
-
-        form.style.display = "none";
-
-    }
-
-    else{
-
-        form.style.display = "block";
-
-    }
-
-});
-const log=document.getElementById("login");
-const form1 = document.querySelector(".log-box");
-log.addEventListener("click", () => {
-
-    if(form1.style.display === "block"){
-
-        form1.style.display = "none";
-
-    }
-
-    else{
-
-        form1.style.display = "block";
-
-    }
 
 });
